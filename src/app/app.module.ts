@@ -1,36 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+// componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ProgressComponent } from './pages/progress/progress.component';
-import { Graficas1Component } from './pages/graficas1/graficas1.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { SbreadcrumbsComponent } from './shared/sbreadcrumbs/sbreadcrumbs.component';
-import { NopagefoundComponent } from './shared/nopagefound/nopagefound.component';
-import { PagesComponent } from './pages/pages.component';
 import { RegisterComponent } from './login/register.component';
+
+// Rutas
+import { AppRoutingModule } from './app-routing.module';
+
+// Modulo paginas
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    NopagefoundComponent,
-    DashboardComponent,
-    ProgressComponent,
-    Graficas1Component,
-    HeaderComponent,
-    SidebarComponent,
-    SbreadcrumbsComponent,
-    PagesComponent,
     RegisterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    PagesModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
