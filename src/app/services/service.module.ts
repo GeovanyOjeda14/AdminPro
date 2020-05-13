@@ -5,7 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginGuardGuard } from './guards/login-guard.guard';
 import { SubirArchivoService } from './service.index';
 import { ModalUploadService } from '../components/modal-upload/modal-upload.service';
-
+import { HospitalService } from './service.index';
+import { MedicoService } from './service.index';
 
 
 @NgModule({
@@ -20,7 +21,10 @@ import { ModalUploadService } from '../components/modal-upload/modal-upload.serv
     UsuarioService,
     LoginGuardGuard,
     SubirArchivoService,
-    ModalUploadService],
+    ModalUploadService,
+    HospitalService,
+    MedicoService
+  ],
     declarations: [
     ]
 })

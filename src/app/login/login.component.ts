@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { UsuarioService } from '../services/service.index';
 import { Usuario } from '../models/usuario.model';
-import { element } from 'protractor';
 
 // declare function  init_plugins();
 
@@ -65,13 +64,10 @@ export class LoginComponent implements OnInit {
     }
 
     let usuario = new Usuario( null, forma.value.email, forma.value.password );
-
     this.usuarioService.login(usuario, forma.value.recuerdame).subscribe( () => this.router.navigate(['dashboard']) );
-
-
-    console.log(forma);
-    console.log(forma.valid);
-    console.log(forma.value);
+    // console.log(forma);
+    // console.log(forma.valid);
+    // console.log(forma.value);
     // this.router.navigate(['/dashboard']);
   }
 
