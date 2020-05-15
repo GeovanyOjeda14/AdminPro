@@ -24,6 +24,22 @@ export class UsuarioService {
     this.cargarStorage();
    }
 
+   renuevaToken() {
+
+    return this.http.get(URL_SERVICIOS + '/login/renuevatoken?token=' + this.token)
+                    .map( (resp: any) => {
+                      this.token = resp.token;
+                      localStorage.setItem('token', this.token);
+                      console.log('token renovado');
+                      return true;
+                    } )
+                    .catch( err => {
+                      this.logout();
+                      swal('No se pudo  revovar token', 'No fue posible renovar token', 'error');
+                      return Observable.throw(err);
+                    } );
+   }
+
   estaLogueado() {
     return ( this.token.length > 5 ) ? true : false;
   }
@@ -110,14 +126,13 @@ export class UsuarioService {
     return this.http.put(URL_SERVICIOS + '/usuario/' + usuario._id + '?token=' + this.token, usuario)
                     .map( (res: any) => {
 
-
                       if ( usuario._id === this.usuario._id) {
                         let usuarioDb : Usuario = res.usuario;
                         this.guardarStorage(usuarioDb._id, this.token, usuarioDb, res.menu );
                       }
                       swal('Usuario actualizado', usuario.nombre, 'success');
                       return true;
-                    } )
+                    })
                     .catch( err => {
                       swal(err.error.mensaje, err.error.errors.message, 'error');
                       // tslint:disable-next-line: deprecation
